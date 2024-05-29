@@ -1,0 +1,387 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&display=swap');
+:root{
+    --color-white-100: hsl(0, 0%, 98%);
+    --color-gray-100: hsl(0, 0%, 41%);
+    --color-black-100: hsl(0, 0%, 8%);
+    --ff-primary: "Epilogue", sans-serif;
+    --height-header:100px;
+}
+
+@mixin table{
+    @media screen and (width >= 768px) {
+        @content;
+    }
+}
+@mixin desktop{
+    @media screen and (width >= 1024px) {
+        @content;
+    }
+}
+@mixin desktopXL{
+    @media screen and (width >= 1440px) {
+        @content;
+    }
+}
+
+body{
+    font-family: var(--ff-primary);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+a{
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+}
+
+ul{
+    list-style: none;
+}
+
+button{
+    display: block;
+    background-color: transparent;
+    font-family: inherit;
+    border: 0;
+    outline: 0;
+    font-size: 1rem;
+}
+
+
+
+img{
+    display: block;
+    object-fit: cover;
+    max-width: 100%;
+}
+
+.container{
+    margin: 0 auto;
+    &--2xl{
+        width: 90%;
+        max-width: 1440px;
+    }
+    &--xl{
+        max-width: 1200px;
+        @include desktop(){
+            width: 90%;
+        }
+    }
+}
+
+
+.header{
+    &__body{
+        height: var(--height-header);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include desktop(){
+            --height-header:80px;
+            justify-content: left;
+            gap: 2rem;
+        }
+    }
+}
+
+.main-nav{
+    position: fixed;
+    z-index: 3;
+    inset: 0 0 0 auto;
+    width: 70%;
+    max-width: 320px;
+    background-color: var(--color-white-100);
+    padding: 1.75rem 1.25rem ;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    overflow-y: auto;
+    transition: all 0.4s ease;
+    transform: translateX(100%);
+    @include desktop(){
+        position: initial;
+        width: initial;
+        max-width: initial;
+        padding: 0;
+        flex-direction: row;
+        gap: 1rem;
+        overflow-y: auto;
+        transform: translateX(0);
+        flex: 1;
+        justify-content: space-between;
+        overflow-y: initial;
+    }
+    &__close{
+        display: block;
+        width: max-content;
+        margin-left: auto;
+        margin-bottom: 1.5rem;
+        z-index: 10;
+        @include desktop(){
+            display: none;
+        }
+        img{
+            width: 1.5rem;
+        }
+    }
+    &__subnav{
+        padding: 0 1.5rem;
+        opacity: 0;
+        overflow: hidden;
+        max-height: 0;
+        transition: all 0.4s ease;
+        @include desktop(){
+            opacity: 0;
+            max-height: initial;
+            position: absolute;
+            top: calc(100% + 1rem);
+            padding: 1rem;
+            box-shadow: 0 16px 38px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            background-color: var(--color-white-100);
+            transform: translateY(-10%);
+            pointer-events: none;
+        }
+        &--right{
+            @include desktop(){
+                left: 0;
+            }
+        }
+        &--left{
+            @include desktop(){
+                right: 0;
+            }
+        }
+
+        a{
+            color: var(--color-gray-100);
+            padding: .75rem 1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            width: max-content;
+            gap: .75rem;
+            transition: color 0.4s ease;
+            &:hover{
+                color: var(--color-black-100);
+            }
+            img{
+                width: 1rem;
+            }
+        }
+    }
+    &__item{
+        @include desktop(){
+            position: relative;
+        }
+    }
+    &__link{
+        cursor: pointer;
+        padding: .75rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        color: var(--color-gray-100);
+        transition: color 0.4s ease;
+        &:hover{
+            color: var(--color-black-100);
+        }
+        & > img{
+            transition: all 0.4s ease;
+        }
+        &.active{
+            & > img{
+                transform: rotate(180deg);
+            }
+            & + .main-nav__subnav{
+                padding: .25rem 1.5rem;
+                opacity: 1;
+                max-height: 600px;
+                @include desktop(){
+                    max-height: initial;
+                    padding: 1rem;
+                    transform: translateY(0);
+                    pointer-events: all;
+        
+                }
+            }
+        }
+
+    }
+    &__list{
+        @include desktop(){
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            
+        }
+    }
+    &__actions{
+        display: grid;
+        gap: .5rem;
+        @include desktop(){
+            grid-template-columns: repeat(2,max-content);
+        }
+        
+        .action-btn{
+            width: 100%;
+            padding: .75rem 1.5rem;
+            border-radius: 16px;
+            border: 2px solid transparent;
+            text-align: center;
+            color: var(--color-gray-100);
+            transition: color 0.4s ease;
+            font-weight: 500;
+            &:hover{
+                color: var(--color-black-100);
+            }
+            &--register{
+                border-color: var(--color-gray-100);
+                
+            }
+        }
+    }
+}
+
+.shadow{
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.567);
+    z-index: 1;
+    transition: all 0.4s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.input-menu{
+    display: none;
+    &:checked{
+        & ~ .main-nav{
+            transform: translateX(0);
+            opacity: 1;
+        }
+        & + .shadow{
+            opacity: 1;
+            pointer-events: initial;
+        }
+    }
+}
+.btn-menu{
+    @include desktop(){
+        display: none;
+    }
+}
+
+.main{
+    &__left{
+        height: 300px;
+        background-image: url('../images/image-hero-mobile.png');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        @include table(){
+            background-image: url('../images/image-hero-desktop.png');
+            height: 460px;
+        }
+        @include desktop(){
+            order: 2;
+            height: 100%;
+            width: 40%;
+            max-width: 500px;
+        }
+    }
+    &__right{
+        padding: 2.125rem 1rem;
+        font-size: 1rem;
+        text-align: center;
+        display: grid;
+        gap: 2rem;
+       @include table(){
+        padding: 3rem 1rem;
+       }
+       @include desktop(){
+        text-align: left;
+        width: 50%;
+        padding: 0;
+        height: 100%;
+        &-top{
+         align-self: flex-end;
+         }
+         &-bottom{
+            align-self: flex-end;
+        }
+       }
+       
+    
+    }
+    &__copy{
+        line-height: 1.5;
+        margin: 1.25rem 0;
+        color: var(--color-gray-100);
+        font-weight: 500;
+        text-wrap: balance;
+        @include desktop(){
+            margin: 1.75rem 0;
+            font-size: 1.125rem;
+        }
+    }
+    &__title{
+        @include table(){
+            font-size: 2.75rem;
+        }
+        @include desktop(){
+            font-size: 4.25rem;
+            text-wrap: balance;
+        }
+        @include desktopXL(){
+            font-size: 4.75rem;
+        }
+    }
+    &__btn{
+        padding: 1rem 1.25rem;
+        border-radius: 1rem;
+        background-color: var(--color-black-100);
+        color: var(--color-white-100);
+        font-weight: 700;
+        transition: all 0.4s ease;
+        border: 1px solid var(--color-black-100);
+        &:hover{
+            background-color: transparent;
+            color: var(--color-black-100);
+        }
+      
+    }
+    &__sponsors{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        @include table(){
+            justify-content: space-around;
+        }
+        @include desktop(){
+            justify-content: flex-start;
+            gap: 3rem;
+        }
+    
+        img{
+            width: 20%;
+            max-width: 5.625rem;
+        }
+    }
+    &__body{
+        @include desktop(){
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: calc(100dvh - var(--height-header));
+        }
+    }
+  
+ 
+}

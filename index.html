@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <meta name="description" content="challenge of Frontend Mentor" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <title>Frontend Mentor | Intro section with dropdown navigation</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container container--2xl">
+        <div class="header__body">
+          <a href="#" title="button redirect to home page">
+            <img
+              class="header__logo"
+              loading="lazy"
+              src="images/logo.svg"
+              alt="icon of logo"
+            />
+          </a>
+          <input type="checkbox" name="menu" class="input-menu" id="menu">
+          <label for="menu" class="shadow"></label>
+          <nav class="main-nav">
+            <ul class="main-nav__list">
+              <label for="menu" role="button" class="main-nav__close">
+                  <img src="images/icon-close-menu.svg" alt="icon of close ">
+              </label>
+              <li class="main-nav__item">
+                <button class="main-nav__link">Features <img src="images/icon-arrow-down.svg" alt=""></button>
+                <ul class="main-nav__subnav main-nav__subnav--left">
+                  <li><a href="#"> <img src="images/icon-todo.svg" alt="icon of todo"> Todo List</a></li>
+                  <li><a href="#"> <img src="images/icon-calendar.svg" alt="icon of Calendar">Calendar</a></li>
+                  <li><a href="#"> <img src="images/icon-reminders.svg" alt="icon of Reminders">Reminders</a></li>
+                  <li><a href="#"> <img src="images/icon-planning.svg" alt="icon of Planing"> Planing</a></li>
+                </ul>
+              </li>
+              <li class="main-nav__item">
+                <button class="main-nav__link">Company <img src="images/icon-arrow-down.svg" alt=""></button>
+                <ul class="main-nav__subnav main-nav__subnav--right">
+                  <li><a href="#">History</a></li>
+                  <li><a href="#">Our Team</a></li>
+                  <li><a href="#">Blog</a></li>
+                </ul>
+              </li>
+              <li class="main-nav__item ">
+                <a href="#" class="main-nav__link">Careers </a>
+              </li>
+              <li class="main-nav__item">
+                <a href="#" class="main-nav__link">About</a>
+              </li>
+            </ul>
+            <div class="main-nav__actions">
+              <a
+                href="#"
+                title="button for login user"
+                class="action-btn action-btn--login"
+                >Login</a
+              >
+              <a
+                href="#"
+                title="button for register user"
+                class="action-btn action-btn--register"
+                >Register</a
+              >
+            </div>
+          </nav>
+          <label for="menu" class="btn-menu">
+            <img src="images/icon-menu.svg" alt="icon of menu">
+          </label>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="container container--xl">
+        <div class="main__body">
+          <div class="main__left"></div>
+          <div class="main__right">
+            <div class="main__right-top">
+              <h1 class="main__title">Make remote work</h1>
+              <p class="main__copy">
+                Get your team in sync, no matter your location. Streamline
+                processes, create team rituals, and watch productivity soar.
+              </p>
+              <a
+                href="#"
+                title="button for about more this page"
+                class="main__btn"
+              >
+                Learn more</a
+              >
+            </div>
+            <div class="main__right-bottom">
+              <div class="main__sponsors">
+                <img src="images/client-databiz.svg" alt="image of sponsor databiz" loading="lazy">
+                <img src="images/client-audiophile.svg" alt="image of sponsor audiophile" loading="lazy">
+                <img src="images/client-meet.svg" alt="image of sponsor meet" loading="lazy">
+                <img src="images/client-maker.svg" alt="image of sponsor maker" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="app.js" async ></script>
+</html>
